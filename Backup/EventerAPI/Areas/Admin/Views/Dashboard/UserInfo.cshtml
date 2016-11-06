@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "User Info";
+    Layout = "~/Areas/Admin/Views/Dashboard/_Dashboard.cshtml";
+}
+
+
+@{
+    var _user = (EventerAPI.user)ViewData["UserInfo"];
+}
+
+<div class="col-md-6">
+    <div class="profile-image">
+        @if(_user.profile_pic_url != null)
+        {
+            <img src="@_user.profile_pic_url" class="img-circle circle-border m-b-md" alt="profile">
+        }   
+    </div>
+    <div class="profile-info">
+        <div class="">
+            <div>
+                <h2>
+                    @(_user.first_name ?? string.Empty)&nbsp;@(_user.last_name ?? string.Empty)
+                </h2>
+                <h4>@(_user.email ?? string.Empty)</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

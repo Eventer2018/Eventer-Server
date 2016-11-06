@@ -1,0 +1,57 @@
+﻿@model  EventerAPI.notification
+@{
+    ViewBag.Title = "Send Notification";
+    Layout = "~/Areas/Admin/Views/Dashboard/_Dashboard.cshtml";
+}
+
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h5>Notification Details</h5>
+    </div>
+    <div class="ibox-content">
+        @using (Html.BeginForm("SendNotification_Add", "Dashboard", FormMethod.Post, new { @class = "form-horizontal" }))
+        { 
+            @Html.AntiForgeryToken();
+            
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Message Text</label>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(a => a.text, new {@class = "form-control" })
+                   <label class="help-block m-b-none error">
+                        @if (@ViewData.ModelState["Text"] != null && @ViewData.ModelState["Text"].Errors.Count > 0)
+                        {
+                            @ViewData.ModelState["Text"].Errors[0].ErrorMessage;
+                        }
+                   </label>
+                </div> 
+
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <input type="submit" class="btn btn-primary" value="Send" />
+                </div>
+            </div>
+            
+            <table>
+                <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+
+            </table>
+        
+        }
+    </div>
+</div>

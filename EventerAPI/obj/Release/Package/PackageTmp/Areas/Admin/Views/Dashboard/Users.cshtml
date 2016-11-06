@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Users";
+    Layout = "~/Areas/Admin/Views/Dashboard/_Dashboard.cshtml";
+
+    WebGrid grid = new WebGrid(Model);    
+}
+
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        User Details
+    </div>
+    <div class="ibox-content">
+        @grid.GetHtml(
+        tableStyle: "table",
+        columns: new[] { 
+        grid.Column(columnName: "user_id", format: (item) => Html.ActionLink(((string)string.Format("{0}", item.user_id)) , "UserInfo", new { id = item.user_id})),
+        grid.Column("first_name"),
+        grid.Column("last_name"),
+        grid.Column("email"),
+        grid.Column(columnName: "gender", format: (item) => item.gender == null ? string.Empty : item.gender == 1 ? "Male" : "Female"),
+        grid.Column(columnName: "birthday", format: (item) => item.birthday == null ? string.Empty : string.Format("{0}", (DateTime.Now - item.birthday).TotalDays/365.242199))
+        })
+    </div>
+</div>

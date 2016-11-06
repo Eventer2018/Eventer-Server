@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eventerModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="45" />
+          <Property Name="password" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="notifications">
+          <Key>
+            <PropertyRef Name="notification_id" />
+          </Key>
+          <Property Name="notification_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="varchar" MaxLength="200" />
+          <Property Name="created_date" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="user_friends">
+          <Key>
+            <PropertyRef Name="user_1" />
+            <PropertyRef Name="user_2" />
+          </Key>
+          <Property Name="user_friends_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_1" Type="bigint" Nullable="false" />
+          <Property Name="user_2" Type="bigint" Nullable="false" />
+          <Property Name="status" Type="int" />
+          <Property Name="created_date" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="user_friends_heap">
+          <Key>
+            <PropertyRef Name="user_friends_heap_id" />
+          </Key>
+          <Property Name="user_friends_heap_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sn_id" Type="varchar" MaxLength="45" />
+          <Property Name="sn_name" Type="varchar" MaxLength="100" />
+          <Property Name="user_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sn_id" Type="ubigint" />
+          <Property Name="first_name" Type="varchar" MaxLength="100" />
+          <Property Name="middle_name" Type="varchar" MaxLength="100" />
+          <Property Name="last_name" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="45" />
+          <Property Name="password" Type="varchar" MaxLength="45" />
+          <Property Name="access_token" Type="varchar" MaxLength="300" />
+          <Property Name="device_token_ios" Type="varchar" MaxLength="100" />
+          <Property Name="device_token_android" Type="varchar" MaxLength="400" />
+          <Property Name="profile_pic_url" Type="varchar" MaxLength="400" />
+          <Property Name="location_id" Type="bigint" />
+          <Property Name="current_location_longitude" Type="float" />
+          <Property Name="current_location_latitude" Type="float" />
+          <Property Name="college_name" Type="varchar" MaxLength="100" />
+          <Property Name="relationship_status" Type="int" />
+          <Property Name="current_work" Type="varchar" MaxLength="300" />
+          <Property Name="intrested_in" Type="int" />
+          <Property Name="gender" Type="int" />
+          <Property Name="birthday" Type="datetime" Precision="0" />
+          <Property Name="description" Type="varchar" MaxLength="1000" />
+          <Property Name="get_notifications" Type="bit" />
+          <Property Name="role" Type="int" />
+          <Property Name="status" Type="int" />
+          <Property Name="created_date" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="video_event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="movie_url" Type="varchar" MaxLength="200" />
+          <Property Name="thumbnail_url" Type="varchar" MaxLength="200" />
+          <Property Name="duration_time" Type="int" />
+          <Property Name="date_created" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <Function Name="add_user_friends" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="eventer">
+          <Parameter Name="user_id" Type="bigint" Mode="In" />
+        </Function>
+        <EntityContainer Name="eventerModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="eventer" store:Type="Tables" />
+          <EntitySet Name="notifications" EntityType="Self.notifications" Schema="eventer" store:Type="Tables" />
+          <EntitySet Name="user_friends" EntityType="Self.user_friends" Schema="eventer" store:Type="Tables" />
+          <EntitySet Name="user_friends_heap" EntityType="Self.user_friends_heap" Schema="eventer" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="eventer" store:Type="Tables" />
+          <EntitySet Name="video_event" EntityType="Self.video_event" Schema="eventer" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eventerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="eventerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="user_friends_heap" EntityType="eventerModel.user_friends_heap" />
+          <FunctionImport Name="add_user_friends">
+          <Parameter Name="user_id" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <EntitySet Name="user_friends" EntityType="eventerModel.user_friends" />
+          <EntitySet Name="notifications" EntityType="eventerModel.notification" />
+          <EntitySet Name="admins" EntityType="eventerModel.admin" />
+          <EntitySet Name="video_event" EntityType="eventerModel.video_event" />
+          <EntitySet Name="users" EntityType="eventerModel.user" />
+        </EntityContainer>
+        <EntityType Name="user_friends_heap">
+          <Key>
+            <PropertyRef Name="user_friends_heap_id" />
+          </Key>
+          <Property Name="user_friends_heap_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sn_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="sn_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="user_friends">
+          <Key>
+            <PropertyRef Name="user_1" />
+            <PropertyRef Name="user_2" />
+          </Key>
+          <Property Name="user_friends_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_1" Type="Int64" Nullable="false" />
+          <Property Name="user_2" Type="Int64" Nullable="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="created_date" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="notification">
+          <Key>
+            <PropertyRef Name="notification_id" />
+          </Key>
+          <Property Name="notification_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="video_event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" />
+          <Property Name="movie_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="thumbnail_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="duration_time" Type="Int32" />
+          <Property Name="date_created" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sn_id" Type="Decimal" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="middle_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="access_token" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="device_token_ios" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="device_token_android" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="profile_pic_url" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="location_id" Type="Int64" />
+          <Property Name="current_location_longitude" Type="Single" />
+          <Property Name="current_location_latitude" Type="Single" />
+          <Property Name="college_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="relationship_status" Type="Int32" />
+          <Property Name="current_work" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="intrested_in" Type="Int32" />
+          <Property Name="gender" Type="Int32" />
+          <Property Name="birthday" Type="DateTime" />
+          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="get_notifications" Type="Boolean" />
+          <Property Name="role" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="created_date" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eventerModelStoreContainer" CdmEntityContainer="eventerEntities">
+          <EntitySetMapping Name="user_friends_heap">
+            <EntityTypeMapping TypeName="eventerModel.user_friends_heap">
+              <MappingFragment StoreEntitySet="user_friends_heap">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="sn_name" ColumnName="sn_name" />
+                <ScalarProperty Name="sn_id" ColumnName="sn_id" />
+                <ScalarProperty Name="user_friends_heap_id" ColumnName="user_friends_heap_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="add_user_friends" FunctionName="eventerModel.Store.add_user_friends" />
+          <EntitySetMapping Name="user_friends">
+            <EntityTypeMapping TypeName="eventerModel.user_friends">
+              <MappingFragment StoreEntitySet="user_friends">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="user_2" ColumnName="user_2" />
+                <ScalarProperty Name="user_1" ColumnName="user_1" />
+                <ScalarProperty Name="user_friends_id" ColumnName="user_friends_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notifications">
+            <EntityTypeMapping TypeName="eventerModel.notification">
+              <MappingFragment StoreEntitySet="notifications">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="notification_id" ColumnName="notification_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="eventerModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="video_event">
+            <EntityTypeMapping TypeName="eventerModel.video_event">
+              <MappingFragment StoreEntitySet="video_event">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="duration_time" ColumnName="duration_time" />
+                <ScalarProperty Name="thumbnail_url" ColumnName="thumbnail_url" />
+                <ScalarProperty Name="movie_url" ColumnName="movie_url" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="eventerModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="get_notifications" ColumnName="get_notifications" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="intrested_in" ColumnName="intrested_in" />
+                <ScalarProperty Name="current_work" ColumnName="current_work" />
+                <ScalarProperty Name="relationship_status" ColumnName="relationship_status" />
+                <ScalarProperty Name="college_name" ColumnName="college_name" />
+                <ScalarProperty Name="current_location_latitude" ColumnName="current_location_latitude" />
+                <ScalarProperty Name="current_location_longitude" ColumnName="current_location_longitude" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="profile_pic_url" ColumnName="profile_pic_url" />
+                <ScalarProperty Name="device_token_android" ColumnName="device_token_android" />
+                <ScalarProperty Name="device_token_ios" ColumnName="device_token_ios" />
+                <ScalarProperty Name="access_token" ColumnName="access_token" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="sn_id" ColumnName="sn_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

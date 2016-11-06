@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Notifications";
+    Layout = "~/Areas/Admin/Views/Dashboard/_Dashboard.cshtml";
+
+    WebGrid grid = new WebGrid(Model);    
+}
+
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h5>Notification Details</h5>
+        <div class="ibox-tools">
+            @Html.ActionLink("Send New Notification", "SendNotification")
+        </div>
+    </div>
+    <div class="ibox-content">
+        @grid.GetHtml(tableStyle: "table",
+            columns: new[] { 
+            grid.Column("created_date"),
+            grid.Column("text")
+        })
+    </div>
+</div>
+
+
+
+<br/>

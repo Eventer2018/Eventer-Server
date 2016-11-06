@@ -1,0 +1,43 @@
+﻿@model  EventerAPI.admin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+     @Styles.Render("~/Content/themes/admin/css")
+</head>
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+             <div>
+                <img class="logo" src="/images/eventer_logo_intro.png"/>
+            </div>
+            <h2>Admin Login</h2>
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "m-t", role = "form" }))
+                        { 
+                        @Html.AntiForgeryToken()
+            
+                    <div class="form-group">
+                        @Html.TextBoxFor(a => a.user_name, new {@class="form-control", placeholder = "Username" })
+                        @if (@ViewData.ModelState["User"] != null && @ViewData.ModelState["User"].Errors.Count > 0)
+                        {
+                            <label class="error">@ViewData.ModelState["User"].Errors[0].ErrorMessage</label>
+                        }
+                    </div>
+                    <div class="form-group">
+                        @Html.PasswordFor(a => a.password, new {@class="form-control", placeholder = "Password" })
+                        @if (@ViewData.ModelState["Password"] != null && @ViewData.ModelState["Password"].Errors.Count > 0)
+                        {
+                            <label class="error">@ViewData.ModelState["Password"].Errors[0].ErrorMessage</label>
+                        }
+                    </div>
+                    <input type="submit" class="btn btn-primary block full-width m-b" value="Login" />
+
+            }
+    </div>
+</body>
+</html>
