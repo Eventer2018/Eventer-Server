@@ -46,9 +46,9 @@ namespace EventerAPI.Controllers
                 string text_1 = provider.FormData.AllKeys.Contains("text_1") ? provider.FormData["text_1"].ToString() : " ";
                 Logger.Write("Text 1 len: " + text_1.Length);
                 string text2 = null;
-                if (text_1.Length > 105)
+                if (text_1.Length > 80)
                 {
-                    int index = text_1.Substring(0, 105).LastIndexOf(' ');
+                    int index = text_1.Substring(0, 80).LastIndexOf(' ');
                     string tmp = text_1.Substring(0, index);
                     text2 = text_1.Substring(index + 1);
                     Logger.Write("Text 2 len: " + text2.Length);

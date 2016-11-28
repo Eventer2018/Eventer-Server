@@ -189,7 +189,7 @@ namespace EventerAPI.Controllers
             }
         }
 
-        [System.Web.Http.HttpGet]
+
         [System.Web.Http.HttpPost]
         public HttpResponseMessage Edit(user _user)
         {
@@ -197,6 +197,7 @@ namespace EventerAPI.Controllers
             {
                 using (eventerEntities de = new eventerEntities())
                 {
+                    Logger.Write(string.Format("User Details: id: {0} name: {1} lname: {2} ", _user.user_id, _user.first_name, _user.last_name));
                     user edited_user = de.users.Find(_user.user_id);
 
                     if (edited_user != null)
