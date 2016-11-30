@@ -106,7 +106,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/29/2016 13:23:08</publishTime>
     </File>
     <File Include="bin/EventerAPI.dll">
-      <publishTime>11/13/2016 21:11:23</publishTime>
+      <publishTime>11/29/2016 13:52:44</publishTime>
     </File>
     <File Include="bin/Facebook.dll">
       <publishTime>05/29/2016 14:39:14</publishTime>

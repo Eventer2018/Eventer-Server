@@ -25,7 +25,7 @@ namespace EventerAPI.Handlers
         //string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=0:d=0.2,fade=out:st=5:d=0.2:alpha=1[Text1]; [Text1] scale=w=iw/1.5:h=ih/2 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.09),0.7*(t-{3}.09),''if(gte(t,{4}),nan, 0)'')':y=main_h-112:shortest=1[video1]; [2:v]fade=in:st=5:d=0.5,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1.5:h=ih/2 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-112:shortest=1 [video2]; [3:v]fade=in:st=0:d=0.5,fade=out:st=15:d=0.5[banner];  [banner] scale=w=iw/1.5:h=ih/2 [bannere]; [video2][bannere] overlay=x='if(lte(t,{3}.2),0.5*(t-{3}.2)*main_h+overlay_h-10,''if(gte(t,{5}),-40*(t-{6}), 0)'')':y=main_h-164:shortest=1\" -y {1}{2}.mp4";
 
         //string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.2,fade=out:st=5:d=0.2:alpha=1[Text1]; [Text1] scale=w=iw/1.5:h=ih/2 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.7*(t-{3}.5),''if(gte(t,{4}),nan, 0)'')':y=main_h-112:shortest=1[video1]; [2:v]fade=in:st=5:d=0.5,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1.5:h=ih/2 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-112:shortest=1 [video2]; [3:v]fade=in:st=0:d=0.5,fade=out:st=15:d=0.5[banner];  [banner] scale=w=iw/1.5:h=ih/2 [bannere]; [video2][bannere] overlay=x='if(lte(t,{3}.2),0.5*(t-{3}.2)*main_h+overlay_h-10,''if(gte(t,{5}),-40*(t-{6}), 0)'')':y=main_h-164:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=5:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1.5:h=ih/1.5 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-61:shortest=1[video1]; [2:v]fade=in:st=5:d=0.5,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1.5:h=ih/1.5 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-61:shortest=1 [video2]; [3:v] scale=w=iw/1.5:h=ih/1.5 [bannere]; [video2][bannere] overlay=x=0 :y=main_h-125:shortest=1\" -y {1}{2}.mp4";
+        string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=5:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1.5:h=ih/1.5 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-62:shortest=1[video1]; [2:v]fade=in:st=5:d=0.5,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1.5:h=ih/1.5 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-62:shortest=1 [video2]; [3:v] scale=w=iw/1.5:h=ih/1.5 [bannere]; [video2][bannere] overlay=x=0 :y=main_h-125:shortest=1\" -y {1}{2}.mp4";
         //string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=5:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1.5:h=ih/2 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-52:shortest=1[video1]; [2:v]fade=in:st=5:d=0.5,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1.5:h=ih/2 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-52:shortest=1 [video2]; [3:v]fade=in:st=0:d=0,fade=out:st=405:d=0[banner]; [banner] scale=w=iw/1.5:h=ih/1.5 [bannere]; [video2][bannere] overlay=x='if(lt(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{5}),-40*(t-{6}), 0)'')':y=main_h-100:shortest=1\" -y {1}{2}.mp4";
 
         string video_cmd_without_name = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=5:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1.5:h=ih/1.5 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-91:shortest=1[video1]; [2:v]fade=in:st=5:d=0.5,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1.5:h=ih/1.5 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-91:shortest=1 [video2]; [3:v]fade=in:st=0:d=0.5,fade=out:st=15:d=0.5[banner]; [banner] scale=w=iw/1.5:h=ih/1.5 [bannere]; [video2][bannere] overlay=x='if(lt(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{5}),-40*(t-{6}), 0)'')':y=main_h-123:shortest=1\" -y {1}{2}.mp4";
@@ -56,23 +56,23 @@ namespace EventerAPI.Handlers
             string fileName_text = tmp_name + "_text.png";
             string fileName_text2 = tmp_name + "_text2.png";
             string fileName_head = tmp_name + "_head.png";
-            string temp = null;
+            string temp = "wwww wwww wwww wwww ww";
             string maxtemp;
             //string photoName = tmp_name + "_photo.png";
             Bitmap b_text1, b_text2;
             Logger.Write(name);
 
-            if (headline != null)
-            {
-                if (name != null)
-                {
-                    temp = headline.Length > name.Length ? headline : name;
-                }
-                else
-                {
-                    temp = headline;
-                }
-            }
+            //if (headline != null)
+            //{
+            //    if (name != null)
+            //    {
+            //        temp = headline.Length > name.Length ? headline : name;
+            //    }
+            //    else
+            //    {
+            //        temp = headline;
+            //    }
+            //}
             maxtemp = temp;
             if (text_1.Length > 40)
             {
@@ -90,19 +90,19 @@ namespace EventerAPI.Handlers
                 }
                 Logger.Write("Text1: " + p1);
                 Logger.Write("Text1: " + p2);
-
-                temp = (temp.Length > p1.Length && temp.Length > p2.Length) ?
-                                  temp :
-                                    (p1.Length > p2.Length) ?
-                                    p1 : p2;
-                if (headline != null)
-                {
-                    temp = temp.Length > headline.Length ? temp : headline;
-                }
+                string text = p1.Length > p2.Length ? p1 : p2;
+                //temp = (temp.Length > p1.Length && temp.Length > p2.Length) ?
+                //                  temp :
+                //                    (p1.Length > p2.Length) ?
+                //                    p1 : p2;
+                //if (headline != null)
+                //{
+                //    temp = temp.Length > headline.Length ? temp : headline;
+                //}
                 b_text1 = string.IsNullOrWhiteSpace(text_1) ? new Bitmap(1, 1) :
                 EditImage.MergeAbove(
-                    EditImage.ConvertTextToBitmap(p1, Color.Black, Color.White, temp + "www"),
-                     EditImage.ConvertTextToBitmap(p2, Color.Black, Color.White, temp + "wwww"));
+                    EditImage.ConvertTextToBitmap(p1, Color.Black, Color.White, text + "wwwww"),
+                     EditImage.ConvertTextToBitmap(p2, Color.Black, Color.White, text + "wwwww"));
             }
             else
             {
@@ -125,24 +125,24 @@ namespace EventerAPI.Handlers
                     p1 = text_2.Substring(0, index);
                     p2 = text_2.Substring(index + 1);
                 }
-
+                string text = p1.Length > p2.Length ? p1 : p2;
                 Logger.Write("Text2: " + p1);
                 Logger.Write("Text2: " + p2);
 
-                temp = (temp.Length > p1.Length && temp.Length > p2.Length) ?
-                    temp :
-                      (p1.Length > p2.Length) ?
-                      p1 : p2;
+                //temp = (temp.Length > p1.Length && temp.Length > p2.Length) ?
+                //    temp :
+                //      (p1.Length > p2.Length) ?
+                //      p1 : p2;
 
-                if (headline != null)
-                {
-                    temp = temp.Length > headline.Length ? temp : headline;
-                }
+                //if (headline != null)
+                //{
+                //    temp = temp.Length > headline.Length ? temp : headline;
+                //}
 
                 b_text2 = string.IsNullOrWhiteSpace(text_2) ? new Bitmap(1, 1) :
                 EditImage.MergeAbove(
-                    EditImage.ConvertTextToBitmap(p1, Color.Black, Color.White, temp),
-                     EditImage.ConvertTextToBitmap(p2, Color.Black, Color.White, temp));
+                    EditImage.ConvertTextToBitmap(p1, Color.Black, Color.White, text + "wwwww"),
+                     EditImage.ConvertTextToBitmap(p2, Color.Black, Color.White, text + "wwwww"));
             }
             else
             {
@@ -153,7 +153,7 @@ namespace EventerAPI.Handlers
             Logger.Write("headline:  " + headline);
             //  Bitmap bt = EditImage.ConvertTextToBitmap(template_headline_string, Color.Gray, Color.White, template_headline_string);
 
-            temp = maxtemp;
+            //temp = maxtemp;
             Bitmap b_headline = string.IsNullOrWhiteSpace(headline) ?
                  new Bitmap(1, 1)
                 : EditImage.ConvertTextToBitmap(headline, Color.Gray, Color.White, temp);
@@ -352,7 +352,11 @@ namespace EventerAPI.Handlers
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
             if (doubleSize)
-                objGraphics.DrawString(i_text, objFont, new SolidBrush(i_textColor), 15, intHeight / 2);
+            {
+                Logger.Write(string.Format("intHeight: {0} intWidth: {1}", intHeight, intWidth));
+                Logger.Write(string.Format("x: {0} y: {1}", intHeight/4, intHeight/4));
+                objGraphics.DrawString(i_text, objFont, new SolidBrush(i_textColor), 4, intHeight / 4);
+            }
             else
                 objGraphics.DrawString(i_text, objFont, new SolidBrush(i_textColor), 0, 0);
             objGraphics.Flush();
