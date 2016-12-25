@@ -25,14 +25,13 @@ namespace EventerAPI.Controllers
             // Check if the request contains multipart/form-data.
             if (!Request.Content.IsMimeMultipartContent())
             {
-                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                return rh.HandleError(HttpStatusCode.UnsupportedMediaType, "UnsupportedMediaType");
             }
-
-            string root = "C:\\Temp\\";
-            var provider = new CustomMultipartFormDataStreamProvider(root);
-
             try
             {
+                string root = "C:\\Temp\\";
+                var provider = new CustomMultipartFormDataStreamProvider(root);
+
                 // Read the form data.
                 await Request.Content.ReadAsMultipartAsync(provider);
 
@@ -46,9 +45,11 @@ namespace EventerAPI.Controllers
                 string text_1 = provider.FormData.AllKeys.Contains("text_1") ? provider.FormData["text_1"].ToString() : " ";
                 Logger.Write("Text 1 len: " + text_1.Length);
                 string text2 = null;
-                if (text_1.Length > 80)
+                if (text_1.Length > 79)
                 {
-                    int index = text_1.Substring(0, 80).LastIndexOf(' ');
+                    int index = text_1.Substring(0, 79).LastIndexOf(' ');
+                    if (index < 75)
+                        index = 79;
                     string tmp = text_1.Substring(0, index);
                     text2 = text_1.Substring(index + 1);
                     Logger.Write("Text 2 len: " + text2.Length);
@@ -59,13 +60,16 @@ namespace EventerAPI.Controllers
                 string headline = provider.FormData.AllKeys.Contains("headline") ? provider.FormData["headline"].ToString() : " ";
                 string profile_pic = provider.FormData.AllKeys.Contains("profile_pic") ? provider.FormData["profile_pic"].ToString() : " ";
                 int duration = provider.FormData.AllKeys.Contains("duration") ? int.Parse(provider.FormData["duration"].ToString()) : 0;
+                int resize= provider.FormData.AllKeys.Contains("resize") ? int.Parse(provider.FormData["resize"].ToString()) : -1;
+                Logger.Write("resize: " + resize.ToString());
+                bool _resize = resize == 1 ? true : false;
 
                 foreach (MultipartFileData file in provider.FileData)
                 {
                     Trace.WriteLine(file.Headers.ContentDisposition.FileName);
                     Trace.WriteLine("Server file path: " + file.LocalFileName);
-
-                     ffh.Convert(Path.GetFileNameWithoutExtension(file.LocalFileName), text_1, text2 == null ? " " : text2, user_name, headline, profile_pic, duration);
+                    Logger.Write("File NAME:"+ Path.GetFileNameWithoutExtension(file.LocalFileName));
+                    ffh.Convert(Path.GetFileNameWithoutExtension(file.LocalFileName), text_1, text2 == null ? " " : text2, user_name, headline, profile_pic, duration,_resize);
                     Logger.Write("OUT: " );
                     //ffh.Convert(Path.GetFileNameWithoutExtension(file.LocalFileName), "text 1", "name 1 ", "headline ", "http://www.partypacks.co.uk/images/products/product_93556_1_orig.jpg");
 
@@ -73,16 +77,13 @@ namespace EventerAPI.Controllers
 
                     return rh.HandleResponse(new_file_name);
                 }
-
-
-
                 return rh.HandleResponse();
             }
             catch (System.Exception e)
             {
                 Logger.Write(e.Message);
                 Logger.Write(e.StackTrace);
-                return rh.HandleError(e.Message);
+                return rh.HandleError(HttpStatusCode.InternalServerError, e.Message);
             }
         }
 

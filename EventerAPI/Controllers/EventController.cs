@@ -150,7 +150,7 @@ namespace EventerAPI.Controllers
             }
             catch (Exception e)
             {
-                return rh.HandleError(e.Message);
+                return rh.HandleError(HttpStatusCode.InternalServerError,e.Message);
             }
         }
 

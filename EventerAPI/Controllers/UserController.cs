@@ -203,6 +203,7 @@ namespace EventerAPI.Controllers
                     if (edited_user != null)
                     {
                         de.Entry(edited_user).CurrentValues.SetValues(EntityUpdate.EntityUpdateNotNull<user>(_user, edited_user));
+                        edited_user.last_name = _user.last_name;
                         de.SaveChanges();
                     }
                     return rh.HandleResponse(new { user_id = _user.user_id });
