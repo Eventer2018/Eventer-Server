@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -29,6 +29,12 @@ namespace EventerAPI.Controllers
             public bool share { get; set; }
         }
 
+        public class feed_params 
+        {
+            public long? user_id { get; set; }
+            public long? offset { get; set; }
+            public long? limit { get; set; }
+        }
 
         [HttpGet]
         [HttpPost]
@@ -157,16 +163,20 @@ namespace EventerAPI.Controllers
 
         [System.Web.Http.HttpGet]
         [System.Web.Http.HttpPost]
-        public HttpResponseMessage Feed()
+        public HttpResponseMessage Feed(feed_params _params)
         {
             try
             {
                 using (eventerEntities de = new eventerEntities())
                 {
 
-                    MySqlParameter[] search_params = new MySqlParameter[] {};
+                    MySqlParameter[] search_params = new MySqlParameter[] {
+                        new MySqlParameter("user_id", _params.user_id),
+                        new MySqlParameter("off", _params.offset ?? 0),
+                        new MySqlParameter("lim", _params.limit ?? 100)
+                    };
 
-                    var videos = ((IObjectContextAdapter)de).ObjectContext.ExecuteStoreQuery<feed_result>("CALL sp_feed()", search_params).ToList<feed_result>();
+                    var videos = ((IObjectContextAdapter)de).ObjectContext.ExecuteStoreQuery<feed_result>("CALL sp_feed(@user_id,@off,@lim)", search_params).ToList<feed_result>();
 
 
                     return rh.HandleResponse(videos);
