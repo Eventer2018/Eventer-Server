@@ -174,7 +174,7 @@ namespace EventerAPI.Controllers
                         new MySqlParameter("user_id", _params.user_id),
                         new MySqlParameter("off", _params.offset ?? 0),
                         new MySqlParameter("lim", _params.limit ?? 100)
-                    };
+                    }; 
 
                     var videos = ((IObjectContextAdapter)de).ObjectContext.ExecuteStoreQuery<feed_result>("CALL sp_feed(@user_id,@off,@lim)", search_params).ToList<feed_result>();
 

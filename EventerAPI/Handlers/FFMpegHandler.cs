@@ -31,6 +31,13 @@ namespace EventerAPI.Handlers
         string video_cmd60 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=60:d=0.1,fade=out:st=65:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=65:d=0.1,fade=out:st=70:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
         string video_cmd90 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=90:d=0.1,fade=out:st=95:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=95:d=0.1,fade=out:st=100:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
         string video_cmd120 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=120:d=0.1,fade=out:st=125:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=125:d=0.1,fade=out:st=130:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        string video_cmd150 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=150:d=0.1,fade=out:st=155:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=155:d=0.1,fade=out:st=160:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        string video_cmd180 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=180:d=0.1,fade=out:st=185:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=185:d=0.1,fade=out:st=190:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        string video_cmd210 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=210:d=0.1,fade=out:st=215:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=215:d=0.1,fade=out:st=220:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        string video_cmd240 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=240:d=0.1,fade=out:st=245:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=245:d=0.1,fade=out:st=250:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        string video_cmd270 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=270:d=0.1,fade=out:st=275:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=275:d=0.1,fade=out:st=280:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        string video_cmd300 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=300:d=0.1,fade=out:st=305:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=305:d=0.1,fade=out:st=310:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        string video_cmd330 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=330:d=0.1,fade=out:st=335:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=335:d=0.1,fade=out:st=340:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
 
 
         //0 - Path
@@ -243,18 +250,53 @@ namespace EventerAPI.Handlers
                         i++;
                         break;
                     case 1:
-                        Logger.Write("FFMpeg Conversion 3 Start: " + string.Format(video_cmd30, path, out_path, tmp_name, b_headline.Height, offset));
+                        Logger.Write("FFMpeg Conversion 3 Start: " + string.Format(video_cmd60, path, out_path, tmp_name, b_headline.Height, offset));
                         runningFFMPEG(string.Format(video_cmd60, path, out_path, tmp_name, b_headline.Height, offset));
                         i++;
                         break;
                     case 2:
-                        Logger.Write("FFMpeg Conversion 4 Start: " + string.Format(video_cmd30, path, out_path, tmp_name, b_headline.Height, offset));
+                        Logger.Write("FFMpeg Conversion 4 Start: " + string.Format(video_cmd90, path, out_path, tmp_name, b_headline.Height, offset));
                         runningFFMPEG(string.Format(video_cmd90, path, out_path, tmp_name, b_headline.Height, offset));
                         i++;
                         break;
                     case 3:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd30, path, out_path, tmp_name, b_headline.Height, offset));
+                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd120, path, out_path, tmp_name, b_headline.Height, offset));
                         runningFFMPEG(string.Format(video_cmd120, path, out_path, tmp_name, b_headline.Height, offset));
+                        i++;
+                        break;
+                    case 4:
+                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd150, path, out_path, tmp_name, b_headline.Height, offset));
+                        runningFFMPEG(string.Format(video_cmd150, path, out_path, tmp_name, b_headline.Height, offset));
+                        i++;
+                        break;
+                    case 5:
+                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd180, path, out_path, tmp_name, b_headline.Height, offset));
+                        runningFFMPEG(string.Format(video_cmd180, path, out_path, tmp_name, b_headline.Height, offset));
+                        i++;
+                        break;
+                    case 6:
+                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd210, path, out_path, tmp_name, b_headline.Height, offset));
+                        runningFFMPEG(string.Format(video_cmd210, path, out_path, tmp_name, b_headline.Height, offset));
+                        i++;
+                        break;
+                    case 7:
+                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd240, path, out_path, tmp_name, b_headline.Height, offset));
+                        runningFFMPEG(string.Format(video_cmd240, path, out_path, tmp_name, b_headline.Height, offset));
+                        i++;
+                        break;
+                    case 8:
+                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd270, path, out_path, tmp_name, b_headline.Height, offset));
+                        runningFFMPEG(string.Format(video_cmd270, path, out_path, tmp_name, b_headline.Height, offset));
+                        i++;
+                        break;
+                    case 9:
+                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd300, path, out_path, tmp_name, b_headline.Height, offset));
+                        runningFFMPEG(string.Format(video_cmd300, path, out_path, tmp_name, b_headline.Height, offset));
+                        i++;
+                        break;
+                    case 10:
+                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd330, path, out_path, tmp_name, b_headline.Height, offset));
+                        runningFFMPEG(string.Format(video_cmd330, path, out_path, tmp_name, b_headline.Height, offset));
                         i++;
                         break;
                     default:
@@ -424,7 +466,7 @@ namespace EventerAPI.Handlers
                 objGraphics.DrawString(i_text, objFont, new SolidBrush(i_textColor), 4, intHeight / 4);
             }
             else
-                objGraphics.DrawString(i_text, objFont, new SolidBrush(i_textColor), 0, 0);
+                objGraphics.DrawString(i_text, objFont, new SolidBrush(i_textColor), 1, 0);
             objGraphics.Flush();
             Logger.Write("Done drawing");
 
