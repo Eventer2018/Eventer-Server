@@ -18,8 +18,8 @@ namespace EventerAPI.Handlers
 {
     public class AmazonHandler : ApiController
     {
-        private static string aws_access_key = "AKIAJGX5RHJOVZIUCB6A";
-        private static string aws_secret_key = "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";
+        private static string aws_access_key = "AKIAJY6RJJZTP2ES3GJA";
+        private static string aws_secret_key = "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";
         private static string bucket_name = "eventer-videos";
 
         public string PutFile(string file_path, string file_name) {
