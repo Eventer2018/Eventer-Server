@@ -23,7 +23,7 @@ namespace EventerAPI.Handlers
         ///        string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=5:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1:h=ih/1 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-{7}+{6}:shortest=1[video1]; [2:v]fade=in:st=4.8:d=0.01,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1:h=ih/1 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-{7}+{6}:shortest=1 [video2]; [3:v] scale=w=iw/1:h=ih/1 [bannere]; [video2][bannere] overlay=x=0 :y=main_h-{7}:shortest=1\" -y {1}{2}.mp4";
 
         string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=6:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1:h=ih/1 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-{7}+{6}:shortest=1[video1]; [2:v]fade=in:st=4:d=0.01,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1:h=ih/1 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-{7}+{6}:shortest=1 [video2]; [3:v] scale=w=iw/1:h=ih/1 [bannere]; [video2][bannere] overlay=x=0 :y=main_h-{7}:shortest=1\" -y {1}{2}.mp4 ";
-
+        string ios_video_cmd = "-i {0}{2} -y {1}{2}.mp4 ";
 
         string video_cmd_without_name = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=500:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1:h=ih/1[Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-{7}+{6}:shortest=1[video1]; [2:v]fade=in:st=0:d=0.5,fade=out:st=515:d=0.5[Text2]; [Text2] scale=w=iw/1:h=ih/1[Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-{7}+{6}:shortest=1 [video2]; [3:v]fade=in:st=0:d=0.1,fade=out:st=515:d=0.5[banner]; [banner] scale=w=iw/1:h=ih/1[bannere]; [video2][bannere] overlay=x='if(lt(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{5}),-40*(t-{6}), 0)'')':y=main_h-{7}:shortest=1\" -y {1}{2}.mp4";
 
@@ -56,6 +56,18 @@ namespace EventerAPI.Handlers
         //| TEXT 2                   |
         //|__________________________|
 
+        public void ConvertIOS(string tmp_name)
+        {
+            string path = "C:\\Temp\\";
+            string out_path = "C:\\VidOut\\";
+
+            Logger.Write("FFMpeg Conversion IOS Start: " + string.Format(ios_video_cmd, path, out_path, tmp_name));
+            runningFFMPEG(string.Format(ios_video_cmd, path, out_path, tmp_name));
+
+            File.Delete(path + tmp_name );
+            Logger.Write("Deleted");
+
+        }
         public void Convert(string tmp_name, string text_1, string text_2, string name, string headline, string photo_url, int duration, bool resize = false)
         {
 
@@ -219,7 +231,7 @@ namespace EventerAPI.Handlers
             }
             if (string.IsNullOrEmpty(name))
             {
-              //  offset = (int)(offset * 2);
+                //  offset = (int)(offset * 2);
                 runningFFMPEG(string.Format(video_cmd_without_name, path, out_path, tmp_name, 0, 5, 15, b_headline.Height, offset));
                 cmd = video_cmd_without_name;
             }
@@ -357,6 +369,7 @@ namespace EventerAPI.Handlers
                     new DataReceivedEventHandler(process_OutputDataReceived);
                 process.Exited += new EventHandler(process_Exited);
 
+                Logger.Write(cmd);
                 Logger.Write("FFMpeg Conversion Process Start: ");
                 process.Start();
                 //

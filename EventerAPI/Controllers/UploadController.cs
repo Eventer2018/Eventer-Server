@@ -42,42 +42,16 @@ namespace EventerAPI.Controllers
 
 
                 string file_name = provider.FormData.AllKeys.Contains("file_name") ? provider.FormData["file_name"].ToString() : " ";
-                string text_1 = provider.FormData.AllKeys.Contains("text_1") ? provider.FormData["text_1"].ToString() : " ";
-                Logger.Write("Text 1 len: " + text_1.Length);
-                string text2 = null;
-                if (text_1.Length > 79)
-                {
-                    int index = text_1.Substring(0, 79).LastIndexOf(' ');
-                    if (index < 75)
-                        index = 79;
-                    string tmp = text_1.Substring(0, index);
-                    text2 = text_1.Substring(index + 1);
-                    Logger.Write("Text 2 len: " + text2.Length);
-                    text_1 = tmp;
-                    Logger.Write("Text 1 len: " + text_1.Length);
-                }
-                string user_name = provider.FormData.AllKeys.Contains("user_name") ? provider.FormData["user_name"].ToString() : " ";
-                string headline = provider.FormData.AllKeys.Contains("headline") ? provider.FormData["headline"].ToString() : " ";
-                string profile_pic = provider.FormData.AllKeys.Contains("profile_pic") ? provider.FormData["profile_pic"].ToString() : " ";
-                int duration = provider.FormData.AllKeys.Contains("duration") ? int.Parse(provider.FormData["duration"].ToString()) : 0;
-                int resize = provider.FormData.AllKeys.Contains("resize") ? int.Parse(provider.FormData["resize"].ToString()) : -1;
-                Logger.Write("resize: " + resize.ToString());
-                bool _resize = resize == 1 ? true : false;
-
-                text_1 = text_1.Replace("\\", " ");
-                text_1 = text_1.Replace(Environment.NewLine, " ");
-                text2 = text2.Replace("\\", " ");
-                text2 = text2.Replace(Environment.NewLine, " ");
+              
                 foreach (MultipartFileData file in provider.FileData)
                 {
                     Trace.WriteLine(file.Headers.ContentDisposition.FileName);
                     Trace.WriteLine("Server file path: " + file.LocalFileName);
                     Logger.Write("File NAME:" + Path.GetFileNameWithoutExtension(file.LocalFileName));
-                    ffh.Convert(Path.GetFileNameWithoutExtension(file.LocalFileName), text_1, text2 == null ? " " : text2, user_name, headline, profile_pic, duration, _resize);
+                    ffh.ConvertIOS(Path.GetFileNameWithoutExtension(file.LocalFileName));
                     Logger.Write("OUT: ");
-                    //ffh.Convert(Path.GetFileNameWithoutExtension(file.LocalFileName), "text 1", "name 1 ", "headline ", "http://www.partypacks.co.uk/images/products/product_93556_1_orig.jpg");
-
-                    string new_file_name = ah.PutFile(@"C:\\VidOut\\" + Path.GetFileName(file.LocalFileName), file_name);
+                    Logger.Write(@"C:\\VidOut\\" + Path.GetFileName(file.LocalFileName)+"  "+ file_name);
+                    string new_file_name = ah.PutFile(@"C:\\VidOut\\" + Path.GetFileName(file.LocalFileName)+".mp4", file_name);
 
                     return rh.HandleResponse(new_file_name);
                 }
