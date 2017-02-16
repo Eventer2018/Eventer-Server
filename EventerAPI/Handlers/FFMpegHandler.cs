@@ -20,24 +20,24 @@ namespace EventerAPI.Handlers
         private const string template_headline_string = "wwwwwwwwwwwwwwwwwwwwwwwww";
         private const string template_body_string = "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww";
 
-        ///        string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=5:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1:h=ih/1 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-{7}+{6}:shortest=1[video1]; [2:v]fade=in:st=4.8:d=0.01,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1:h=ih/1 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-{7}+{6}:shortest=1 [video2]; [3:v] scale=w=iw/1:h=ih/1 [bannere]; [video2][bannere] overlay=x=0 :y=main_h-{7}:shortest=1\" -y {1}{2}.mp4";
+        ///        string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=5:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1:h=ih/1 [Text1e]; [0:v][Text1e] overlay=x=0:y=main_h-{7}+{6}:shortest=1[video1]; [2:v]fade=in:st=4.8:d=0.01,fade=out:st=10:d=0.5[Text2]; [Text2] scale=w=iw/1:h=ih/1 [Text2e]; [video1][Text2e]overlay=x=0:y=main_h-{7}+{6}:shortest=1 [video2]; [3:v] scale=w=iw/1:h=ih/1 [bannere]; [video2][bannere] overlay=x=0 :y=main_h-{7}:shortest=1\" -y {1}{2}.mp4";
 
-        string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=6:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1:h=ih/1 [Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-{7}+{6}:shortest=1[video1]; [2:v]fade=in:st=4:d=0.01,fade=out:st=15:d=0.5[Text2]; [Text2] scale=w=iw/1:h=ih/1 [Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-{7}+{6}:shortest=1 [video2]; [3:v] scale=w=iw/1:h=ih/1 [bannere]; [video2][bannere] overlay=x=0 :y=main_h-{7}:shortest=1\" -y {1}{2}.mp4 ";
+        string video_cmd = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]trim=0:15,fade=in:st=0:d=0.2:alpha=1,fade=out:st=5:d=0.1:alpha=1,loop=999:375:0,setpts=N/25/TB[Text1]; [Text1] scale=w=iw/1:h=ih/1 [Text1e]; [0:v][Text1e] overlay=x=0:y=main_h-{7}+{6}:shortest=1[video1]; [2:v]trim=0:15,fade=in:st=4.5:d=0.1:alpha=1,fade=out:st=10:d=0.4:alpha=1,loop=999:375:0,setpts=N/25/TB[Text2]; [Text2] scale=w=iw/1:h=ih/1 [Text2e]; [video1][Text2e]overlay=x=0:y=main_h-{7}+{6}:shortest=1 [video2]; [3:v] scale=w=iw/1:h=ih/1 [bannere]; [video2][bannere] overlay=x=0 :y=main_h-{7}:shortest=1\" -y {1}{2}.mp4 ";
         string ios_video_cmd = "-i {0}{2} -y {1}{2}.mp4 ";
-
+        
         string video_cmd_without_name = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \" [1:v]fade=in:st=0:d=0.1,fade=out:st=500:d=0.1:alpha=1[Text1]; [Text1] scale=w=iw/1:h=ih/1[Text1e]; [0:v][Text1e] overlay=x='if(lte(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{4}),nan, 0)'')':y=main_h-{7}+{6}:shortest=1[video1]; [2:v]fade=in:st=0:d=0.5,fade=out:st=515:d=0.5[Text2]; [Text2] scale=w=iw/1:h=ih/1[Text2e]; [video1][Text2e]overlay=x='if(lte(t,{4}),nan,''if(gte(t,{5}),-40*(t-{4}.5),0)'')':y=main_h-{7}+{6}:shortest=1 [video2]; [3:v]fade=in:st=0:d=0.1,fade=out:st=515:d=0.5[banner]; [banner] scale=w=iw/1:h=ih/1[bannere]; [video2][bannere] overlay=x='if(lt(t,{3}.5),0.07*(t-{3}.5)*main_h-52,''if(gte(t,{5}),-40*(t-{6}), 0)'')':y=main_h-{7}:shortest=1\" -y {1}{2}.mp4";
 
-        string video_cmd30 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=30:d=0.1,fade=out:st=35:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=35:d=0.1,fade=out:st=40:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd60 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=60:d=0.1,fade=out:st=65:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=65:d=0.1,fade=out:st=70:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd90 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=90:d=0.1,fade=out:st=95:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=95:d=0.1,fade=out:st=100:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd120 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=120:d=0.1,fade=out:st=125:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=125:d=0.1,fade=out:st=130:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd150 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=150:d=0.1,fade=out:st=155:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=155:d=0.1,fade=out:st=160:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd180 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=180:d=0.1,fade=out:st=185:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=185:d=0.1,fade=out:st=190:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd210 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=210:d=0.1,fade=out:st=215:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=215:d=0.1,fade=out:st=220:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd240 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=240:d=0.1,fade=out:st=245:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=245:d=0.1,fade=out:st=250:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd270 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=270:d=0.1,fade=out:st=275:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=275:d=0.1,fade=out:st=280:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd300 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=300:d=0.1,fade=out:st=305:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=305:d=0.1,fade=out:st=310:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
-        string video_cmd330 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=330:d=0.1,fade=out:st=335:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=335:d=0.1,fade=out:st=340:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd30 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=30:d=0.1,fade=out:st=35:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=35:d=0.1,fade=out:st=40:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd60 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=60:d=0.1,fade=out:st=65:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=65:d=0.1,fade=out:st=70:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd90 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=90:d=0.1,fade=out:st=95:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=95:d=0.1,fade=out:st=100:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd120 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=120:d=0.1,fade=out:st=125:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=125:d=0.1,fade=out:st=130:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd150 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=150:d=0.1,fade=out:st=155:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=155:d=0.1,fade=out:st=160:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd180 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=180:d=0.1,fade=out:st=185:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=185:d=0.1,fade=out:st=190:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd210 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=210:d=0.1,fade=out:st=215:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=215:d=0.1,fade=out:st=220:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd240 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=240:d=0.1,fade=out:st=245:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=245:d=0.1,fade=out:st=250:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd270 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=270:d=0.1,fade=out:st=275:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=275:d=0.1,fade=out:st=280:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd300 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=300:d=0.1,fade=out:st=305:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=305:d=0.1,fade=out:st=310:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
+        //string video_cmd330 = "-i {0}{2}.mp4 -loop 1 -i {0}{2}_text.png -loop 1 -i {0}{2}_text2.png -loop 1 -i {0}{2}_head.png -c:a copy -filter_complex \"[1:v]fade=in:st=330:d=0.1,fade=out:st=335:d=0.0:alpha=1[Text1];[Text1]scale=w=iw/1:h=ih/1[Text1e];[0:v][Text1e]overlay=x=0:y=main_h-{4}+{3}:shortest=1[video1];[2:v]fade=in:st=335:d=0.1,fade=out:st=340:d=0.5[Text2];[Text2]scale=w=iw/1:h=ih/1[Text2e];[video1][Text2e]overlay=x=0 :y=main_h-{4}+{3}:shortest=1 [video2];[3:v]fade=in:st=0:d=0.01,fade=out:st=540:d=0.5[banner];[banner]scale=w=iw/1:h=ih/1[bannere];[video2][bannere]overlay=x=0 :y=main_h-{4}:shortest=1\" -y {1}{2}.mp4";
 
 
         //0 - Path
@@ -81,18 +81,7 @@ namespace EventerAPI.Handlers
             //string photoName = tmp_name + "_photo.png";
             Bitmap b_text1, b_text2;
             Logger.Write(name);
-
-            //if (headline != null)
-            //{
-            //    if (name != null)
-            //    {
-            //        temp = headline.Length > name.Length ? headline : name;
-            //    }
-            //    else
-            //    {
-            //        temp = headline;
-            //    }
-            //}
+            
             maxtemp = temp;
             if (text_1.Length > 40)
             {
@@ -123,14 +112,7 @@ namespace EventerAPI.Handlers
                 Logger.Write("Text1: " + p1);
                 Logger.Write("Text1: " + p2);
                 string text = p1.Length > p2.Length ? p1 : p2;
-                //temp = (temp.Length > p1.Length && temp.Length > p2.Length) ?
-                //                  temp :
-                //                    (p1.Length > p2.Length) ?
-                //                    p1 : p2;
-                //if (headline != null)
-                //{
-                //    temp = temp.Length > headline.Length ? temp : headline;
-                //}
+
                 b_text1 = string.IsNullOrWhiteSpace(text_1) ? new Bitmap(1, 1) :
                 EditImage.MergeAbove(
                     EditImage.ConvertTextToBitmap(p1, Color.Black, Color.White, text + "wwwww", resize),
@@ -172,17 +154,7 @@ namespace EventerAPI.Handlers
                 string text = p1.Length > p2.Length ? p1 : p2;
                 Logger.Write("Text2: " + p1);
                 Logger.Write("Text2: " + p2);
-
-                //temp = (temp.Length > p1.Length && temp.Length > p2.Length) ?
-                //    temp :
-                //      (p1.Length > p2.Length) ?
-                //      p1 : p2;
-
-                //if (headline != null)
-                //{
-                //    temp = temp.Length > headline.Length ? temp : headline;
-                //}
-
+                
                 b_text2 = string.IsNullOrWhiteSpace(text_2) ? new Bitmap(1, 1) :
                 EditImage.MergeAbove(
                     EditImage.ConvertTextToBitmap(p1, Color.Black, Color.White, text + "wwwww", resize),
@@ -245,93 +217,6 @@ namespace EventerAPI.Handlers
                 runningFFMPEG(string.Format(video_cmd, path, out_path, tmp_name, 0, 5, 15, b_headline.Height, offset));
                 cmd = video_cmd;
             }
-
-            Logger.Write("Duration: " + duration);
-            int t = 30;
-            duration -= 30;
-            Logger.Write("Duration: " + duration);
-            int i = 0;
-            while (duration > 0)
-            {
-                File.Copy(out_path + tmp_name + ".mp4", path + tmp_name + ".mp4", true);
-                switch (i)
-                {
-                    case 0:
-                        Logger.Write("FFMpeg Conversion 2 Start: " + string.Format(video_cmd30, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd30, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 1:
-                        Logger.Write("FFMpeg Conversion 3 Start: " + string.Format(video_cmd60, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd60, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 2:
-                        Logger.Write("FFMpeg Conversion 4 Start: " + string.Format(video_cmd90, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd90, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 3:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd120, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd120, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 4:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd150, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd150, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 5:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd180, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd180, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 6:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd210, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd210, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 7:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd240, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd240, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 8:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd270, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd270, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 9:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd300, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd300, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    case 10:
-                        Logger.Write("FFMpeg Conversion 5 Start: " + string.Format(video_cmd330, path, out_path, tmp_name, b_headline.Height, offset));
-                        runningFFMPEG(string.Format(video_cmd330, path, out_path, tmp_name, b_headline.Height, offset));
-                        i++;
-                        break;
-                    default:
-                        duration = -10;
-                        break;
-
-                }
-                duration -= 30;
-            }
-
-            /*
-            for (var i = 0; i < duration; i = i + 30) {
-                Logger.Write("FFMpeg Conversion Start: " + string.Format(video_cmd, path, out_path, tmp_name, i, i + 5, i + 15, i + 1));
-
-                if (i > 0) {
-
-                }
-
-                runningFFMPEG(string.Format(video_cmd, path, out_path, tmp_name, i, i+5, i+15, i+1));
-            }
-             * */
-
-
             File.Delete(path + tmp_name + ".mp4");
             File.Delete(path + fileName_text);
             File.Delete(path + fileName_text2);
