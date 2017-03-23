@@ -22,6 +22,7 @@ namespace EventerAPI.Handlers
         private static string aws_secret_key = "k8yZVYKJMaJXmOSf6YaPQkc1FkvrLfFxJ9YnYmqI";
         private static string bucket_name = "eventer-videos";
 
+		
         public string PutFile(string file_path, string file_name) {
 
             string fname = string.IsNullOrWhiteSpace(file_name) ? Guid.NewGuid().ToString().Split('-')[0] + DateTime.Now.ToString("_yyyyMMddHHmm") + Path.GetExtension(file_path) : file_name;

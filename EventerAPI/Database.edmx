@@ -46,7 +46,7 @@
             <PropertyRef Name="user_id" />
           </Key>
           <Property Name="user_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="sn_id" Type="ubigint" />
+          <Property Name="sn_id" Type="bigint" />
           <Property Name="first_name" Type="varchar" MaxLength="100" />
           <Property Name="middle_name" Type="varchar" MaxLength="100" />
           <Property Name="last_name" Type="varchar" MaxLength="100" />
@@ -79,6 +79,7 @@
           <Property Name="user_id" Type="bigint" />
           <Property Name="movie_url" Type="varchar" MaxLength="200" />
           <Property Name="thumbnail_url" Type="varchar" MaxLength="200" />
+          <Property Name="video_title" Type="varchar" MaxLength="1000" />
           <Property Name="duration_time" Type="int" />
           <Property Name="date_created" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
           <Property Name="status" Type="int" />
@@ -153,6 +154,7 @@
           <Property Name="user_id" Type="Int64" />
           <Property Name="movie_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="thumbnail_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="video_title" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="duration_time" Type="Int32" />
           <Property Name="date_created" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="status" Type="Int32" />
@@ -162,7 +164,7 @@
             <PropertyRef Name="user_id" />
           </Key>
           <Property Name="user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="sn_id" Type="Decimal" />
+          <Property Name="sn_id" Type="Int64" />
           <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="middle_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -239,6 +241,7 @@
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="date_created" ColumnName="date_created" />
                 <ScalarProperty Name="duration_time" ColumnName="duration_time" />
+                <ScalarProperty Name="video_title" ColumnName="video_title" />
                 <ScalarProperty Name="thumbnail_url" ColumnName="thumbnail_url" />
                 <ScalarProperty Name="movie_url" ColumnName="movie_url" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -292,7 +295,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -18,6 +18,7 @@ namespace EventerAPI
         public Nullable<long> user_id { get; set; }
         public string movie_url { get; set; }
         public string thumbnail_url { get; set; }
+        public string video_title { get; set; }
         public Nullable<int> duration_time { get; set; }
         public Nullable<System.DateTime> date_created { get; set; }
         public Nullable<int> status { get; set; }

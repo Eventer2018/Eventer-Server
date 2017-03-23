@@ -15,7 +15,7 @@ namespace EventerAPI
     public partial class user
     {
         public long user_id { get; set; }
-        public Nullable<decimal> sn_id { get; set; }
+        public Nullable<long> sn_id { get; set; }
         public string first_name { get; set; }
         public string middle_name { get; set; }
         public string last_name { get; set; }

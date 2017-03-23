@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using Facebook;
 using System.Dynamic;
+using System.IO;
+using System.Net;
+using System.Configuration;
 
 namespace EventerAPI.Handlers
 {
@@ -95,19 +98,42 @@ namespace EventerAPI.Handlers
             return _result;
         }
 
-        public void PostVideoToWall(string token, string video_url, string thumbnail_url)
+        public void PostVideoToWall(string token,string video_title, string video_url, string thumbnail_url, bool post_as_file)
         {
             var client = new FacebookClient(token);
             try
             {
                 dynamic parameters = new ExpandoObject();
                 //       parameters.method = "video.upload";
-                parameters.description = "Video upload using Api Eventer";
+                //parameters.description = video_title;//"Video upload using Api Eventer";
                 //   parameters.source = mediaObject;
-                parameters.title = "video bala";
-                parameters.link = video_url;
+                parameters.title = video_title;
                 parameters.picture = thumbnail_url;
-                client.Post("/me/feed", parameters);
+
+                if (post_as_file)
+                {
+                    string download_path = ConfigurationManager.AppSettings["DownloadPath"];
+                    string file_name = Path.GetFileName(video_url);
+                    string mime_type = MimeMapping.GetMimeMapping(file_name);
+
+                    using (WebClient wc = new WebClient()) {
+                        wc.DownloadFile(video_url, download_path + file_name);
+
+                    }
+
+                    var media_object = new FacebookMediaObject { ContentType = mime_type, FileName = file_name }.SetValue(File.ReadAllBytes(download_path + file_name));
+                    parameters.source = media_object;
+                    client.Post("/me/videos", parameters);
+
+                    File.Delete(download_path + file_name);
+                }
+                else
+                {
+                    parameters.link = video_url;
+                    client.Post("/me/feed", parameters);
+                }
+                
+                //client.Post("/me/feed", parameters);
             }
             catch (FacebookApiException ex)
             {

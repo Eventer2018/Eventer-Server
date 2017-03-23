@@ -73,7 +73,8 @@ namespace EventerAPI.Controllers
                     }
 
                     if (_event.share) {
-                        fh.PostVideoToWall(event_user.access_token, _event.movie_url, _event.thumbnail_url);
+
+                        fh.PostVideoToWall(event_user.access_token, _event.video_title,  _event.movie_url, _event.thumbnail_url, true);
                     }
 
                     dynamic event_result = new 
